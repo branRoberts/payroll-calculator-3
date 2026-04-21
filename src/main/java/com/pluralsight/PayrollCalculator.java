@@ -10,9 +10,9 @@ public class PayrollCalculator {
 
         try {
             String regex = "\\|";
+            String filename = "employees.csv";
 
-            FileReader file = new FileReader("employees.csv");
-            BufferedReader bufferedReader = new BufferedReader(file);
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
 
 
 
@@ -22,9 +22,9 @@ public class PayrollCalculator {
                 int id = Integer.parseInt(fields[0]);
                 String name = fields[1];
                 double hours = Double.parseDouble(fields[2].trim());
-                double salary = Double.parseDouble(fields[3].trim());
+                double payrate = Double.parseDouble(fields[3].trim());
 
-                Employee employee = new Employee(id,name,hours,salary);
+                Employee employee = new Employee(id,name,hours,payrate);
                 for (int i = 0; i < fields.length; i++) {
                     System.out.println(fields[i]);
 
@@ -33,7 +33,7 @@ public class PayrollCalculator {
             }
 
         }catch (Exception e){
-            System.out.println("Invalid input");
+            System.out.println("Error Reading File");
         }
 
     }
